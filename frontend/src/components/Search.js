@@ -1,8 +1,9 @@
 export default function Search({ filterCountries }) {
   return (
     <div>
+      <p>Find Countries</p>
       <p>
-        find countries <input onChange={filterCountries} />
+        <input onChange={filterCountries} />
       </p>
     </div>
   );
