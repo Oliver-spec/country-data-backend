@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 export default function Weather({ country }) {
   if (country.capital === undefined) {
@@ -14,12 +14,10 @@ export default function Weather({ country }) {
 
   // effects
   useEffect(() => {
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${country.capital}&units=metric&APPID=${api_key}`
-      )
+    api
+      .getWeather(country, api_key)
       .then((response) => setWeather(response.data));
-  }, [country.capital, api_key]);
+  }, [country, api_key]);
 
   console.log(weather);
 

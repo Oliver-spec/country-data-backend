@@ -4,7 +4,7 @@ import Names from "./components/Names";
 import TooMany from "./components/TooMany";
 import Detail from "./components/Detail";
 import Weather from "./components/Weather";
-import network from "./services/network";
+import api from "./services/api";
 
 export default function App() {
   // states
@@ -13,7 +13,7 @@ export default function App() {
 
   // effects
   useEffect(() => {
-    network().then((response) => {
+    api.getAll().then((response) => {
       setCountries(response);
     });
   }, []);
