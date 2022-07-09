@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Search from "./components/Search";
 import Names from "./components/Names";
 import TooMany from "./components/TooMany";
 import Detail from "./components/Detail";
 import Weather from "./components/Weather";
+import network from "./services/network";
 
 export default function App() {
   // states
@@ -13,8 +13,8 @@ export default function App() {
 
   // effects
   useEffect(() => {
-    axios.get("https://restcountries.com/v3.1/all").then((response) => {
-      setCountries(response.data);
+    network().then((response) => {
+      setCountries(response);
     });
   }, []);
 
