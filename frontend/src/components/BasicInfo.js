@@ -2,8 +2,6 @@ import Capitals from "./Capitals";
 import Continents from "./Continents";
 
 export default function BasicInfo({ country }) {
-  console.log(country);
-
   let landlocked = "No";
   if (country.landlocked) {
     landlocked = "Yes";
