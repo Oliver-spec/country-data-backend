@@ -1,19 +1,28 @@
-import Currencies from "./Currencies";
+import Capitals from "./Capitals";
 
 export default function BasicInfo({ country }) {
-  if (!country.capital) {
-    country.capital = country.name.common;
+  console.log(country);
+
+  let landlocked = "No";
+  if (country.landlocked) {
+    landlocked = "Yes";
   }
 
   return (
-    <div>
+    <>
       <h1>{country.name.common}</h1>
-      <p>Capital: {country.capital}</p>
+      <Capitals country={country} />
       <p>
         Area: {country.area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
         km²
       </p>
-      <Currencies country={country} />
-    </div>
+      <p>Continents: {country.continents}</p>
+      <p>Sub-region: {country.subregion}</p>
+      <p>
+        Population:{" "}
+        {country.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+      </p>
+      <p>Landlocked: {landlocked}</p>
+    </>
   );
 }
