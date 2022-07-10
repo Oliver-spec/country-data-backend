@@ -1,4 +1,5 @@
 import Capitals from "./Capitals";
+import Continents from "./Continents";
 
 export default function BasicInfo({ country }) {
   console.log(country);
@@ -12,12 +13,12 @@ export default function BasicInfo({ country }) {
     <>
       <h1>{country.name.common}</h1>
       <Capitals country={country} />
+      <Continents country={country} />
+      <p>Sub-region: {country.subregion}</p>
       <p>
         Area: {country.area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
         km²
       </p>
-      <p>Continents: {country.continents}</p>
-      <p>Sub-region: {country.subregion}</p>
       <p>
         Population:{" "}
         {country.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}

@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import api from "../services/api";
 
 export default function Weather({ country }) {
+  // variables
+  let capital = country.capital[0];
   if (!country.capital) {
-    country.capital = country.name.common;
+    capital = country.name.common;
   }
 
-  // variables
   const api_key = process.env.REACT_APP_API_KEY;
 
   // states
@@ -15,21 +16,21 @@ export default function Weather({ country }) {
   // effects
   useEffect(() => {
     api
-      .getWeather(country, api_key)
+      .getWeather(capital, api_key)
       .then((response) => setWeather(response.data));
-  }, [country, api_key]);
+  }, [capital, api_key]);
 
   if (Object.keys(weather).length === 0) {
     return (
       <div>
-        <h1>Weather in {country.capital}</h1>
-        <p>Can't find weather in {country.capital}</p>
+        <h1>Weather in {capital}</h1>
+        <p>Can't find weather in {capital}</p>
       </div>
     );
   } else {
     return (
       <div>
-        <h1>Weather in {country.capital}</h1>
+        <h1>Weather in {capital}</h1>
         <p>Temperature {weather.main.temp}°C</p>
         <img
           src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}

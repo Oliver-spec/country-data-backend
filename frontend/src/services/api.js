@@ -6,9 +6,9 @@ function getAll() {
     .then((response) => response.data);
 }
 
-function getWeather(country, api_key) {
+function getWeather(capital, api_key) {
   return axios.get(
-    `https://api.openweathermap.org/data/2.5/weather?q=${country.capital}&units=metric&APPID=${api_key}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${capital}&units=metric&APPID=${api_key}`
   );
 }
 
