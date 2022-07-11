@@ -8,17 +8,13 @@ export default function Weather({ country }) {
     capital = [country.name.common];
   }
 
-  const api_key = process.env.REACT_APP_API_KEY;
-
   // states
   const [weather, setWeather] = useState({});
 
   // effects
   useEffect(() => {
-    api
-      .getWeather(capital[0], api_key)
-      .then((response) => setWeather(response.data));
-  }, [capital, api_key]);
+    api.getWeather(capital[0]).then((response) => setWeather(response));
+  }, [capital]);
 
   if (Object.keys(weather).length === 0) {
     return (
