@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api_proxy = "https://express-api-proxy-0451.herokuapp.com/";
+const api_proxy = "https://express-api-proxy-01010.herokuapp.com";
 
 function getAll() {
   return axios
@@ -10,7 +10,7 @@ function getAll() {
 
 function getWeather(capital) {
   return axios
-    .post(`${api_proxy}weather`, {
+    .post(`${api_proxy}/weather`, {
       URL: `https://api.openweathermap.org/data/2.5/weather?q=${capital}&units=metric&APPID=api_key`,
     })
     .then((response) => response.data);
