@@ -13,6 +13,7 @@ export default function App() {
   const [displayedCountries, setDisplayedCountries] = useState([]);
   const [dialCodes, setDialCodes] = useState([]);
   const [dialCodeSearchResult, setDialCodeSearchResult] = useState([]);
+  // console.log(countries, dialCodes);
 
   // effects
   useEffect(() => {
@@ -50,6 +51,8 @@ export default function App() {
         <Search
           filterCountries={filterCountries}
           searchByCountryCode={searchByCountryCode}
+          countries={countries}
+          dialCodes={dialCodes}
         />
         <DialCodeResult dialCodeSearchResult={dialCodeSearchResult} />
         <TooMany />
@@ -61,6 +64,8 @@ export default function App() {
         <Search
           filterCountries={filterCountries}
           searchByCountryCode={searchByCountryCode}
+          countries={countries}
+          dialCodes={dialCodes}
         />
         <DialCodeResult dialCodeSearchResult={dialCodeSearchResult} />
         <Detail country={displayedCountries[0]} />
@@ -73,6 +78,8 @@ export default function App() {
         <Search
           filterCountries={filterCountries}
           searchByCountryCode={searchByCountryCode}
+          countries={countries}
+          dialCodes={dialCodes}
         />
         <DialCodeResult dialCodeSearchResult={dialCodeSearchResult} />
         <Names

@@ -20,7 +20,8 @@ export default function Weather({ country }) {
     return (
       <div>
         <h1>Weather in {capital[0]}</h1>
-        <p>Can't find weather in {capital[0]}</p>
+        {/* <p>Can't find weather in {capital[0]}</p> */}
+        <h3>Loading...</h3>
       </div>
     );
   } else {
