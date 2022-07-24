@@ -40,7 +40,7 @@ export default function App() {
     const countryByDialCode = dialCodes.filter(
       (country) => country.dial_code === `+${event.target.value}`
     );
-    console.log(countryByDialCode);
+    // console.log(countryByDialCode);
     setDialCodeSearchResult(countryByDialCode);
   }
 
