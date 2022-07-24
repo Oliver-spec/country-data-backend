@@ -1,10 +1,14 @@
-export default function Search({ filterCountries }) {
+export default function Search({ filterCountries, searchByCountryCode }) {
   return (
-    <div>
+    <>
       <p>Find Countries</p>
       <p>
         <input onChange={filterCountries} />
       </p>
-    </div>
+      <p>Find Countries by Country Code</p>
+      <p>
+        + <input onChange={searchByCountryCode} />
+      </p>
+    </>
   );
 }

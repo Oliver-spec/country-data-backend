@@ -16,6 +16,10 @@ function getWeather(capital) {
     .then((response) => response.data);
 }
 
-const functions = { getAll, getWeather };
+function getDialCodes() {
+  return axios.get(`/data`).then((response) => response.data);
+}
+
+const functions = { getAll, getWeather, getDialCodes };
 
 export default functions;

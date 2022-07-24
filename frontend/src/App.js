@@ -4,17 +4,25 @@ import Names from "./components/Names";
 import TooMany from "./components/TooMany";
 import Detail from "./components/Detail";
 import Weather from "./components/Weather";
+import DialCodeResult from "./components/DialCodeResult";
 import api from "./services/api";
 
 export default function App() {
   // states
   const [countries, setCountries] = useState([]);
   const [displayedCountries, setDisplayedCountries] = useState([]);
+  const [dialCodes, setDialCodes] = useState([]);
+  const [dialCodeSearchResult, setDialCodeSearchResult] = useState([]);
 
   // effects
   useEffect(() => {
     api.getAll().then((response) => {
       setCountries(response);
+      // console.log(response);
+    });
+    api.getDialCodes().then((response) => {
+      setDialCodes(response);
+      // console.log(response);
     });
   }, []);
 
@@ -28,30 +36,50 @@ export default function App() {
     setDisplayedCountries(filtered);
   }
 
+  function searchByCountryCode(event) {
+    const countryByDialCode = dialCodes.filter(
+      (country) => country.dial_code === `+${event.target.value}`
+    );
+    console.log(countryByDialCode);
+    setDialCodeSearchResult(countryByDialCode);
+  }
+
   if (displayedCountries.length > 10) {
     return (
-      <div>
-        <Search filterCountries={filterCountries} />
+      <>
+        <Search
+          filterCountries={filterCountries}
+          searchByCountryCode={searchByCountryCode}
+        />
+        <DialCodeResult dialCodeSearchResult={dialCodeSearchResult} />
         <TooMany />
-      </div>
+      </>
     );
   } else if (displayedCountries.length === 1) {
     return (
-      <div>
-        <Search filterCountries={filterCountries} />
+      <>
+        <Search
+          filterCountries={filterCountries}
+          searchByCountryCode={searchByCountryCode}
+        />
+        <DialCodeResult dialCodeSearchResult={dialCodeSearchResult} />
         <Detail country={displayedCountries[0]} />
         <Weather country={displayedCountries[0]} />
-      </div>
+      </>
     );
   } else {
     return (
-      <div>
-        <Search filterCountries={filterCountries} />
+      <>
+        <Search
+          filterCountries={filterCountries}
+          searchByCountryCode={searchByCountryCode}
+        />
+        <DialCodeResult dialCodeSearchResult={dialCodeSearchResult} />
         <Names
           displayedCountries={displayedCountries}
           setDisplayedCountries={setDisplayedCountries}
         />
-      </div>
+      </>
     );
   }
 }
