@@ -6,3 +6,6 @@ node_modules
 
 # test
 test.rest
+
+# SECRET
+.env

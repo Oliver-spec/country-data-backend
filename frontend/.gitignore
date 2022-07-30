@@ -3,9 +3,6 @@
 # SECRET
 .env 
 
-# build
-/build
-
 # dependencies
 /node_modules
 /.pnp
