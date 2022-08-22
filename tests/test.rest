@@ -1,0 +1,5 @@
+GET http://localhost:3001/data
+###
+GET http://localhost:3001/allCountries HTTP/1.1
+###
+GET http://localhost:3001/weather/London HTTP/1.1
